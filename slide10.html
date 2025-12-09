@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Best Practices &amp; Summary</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <style>
+        /* Custom scrollbar to ensure clean look if content overflows slightly */
+        ::-webkit-scrollbar {
+            width: 0px;
+            background: transparent;
+        }
+
+        .glass-panel {
+            background-color: rgba(30, 41, 59, 0.6);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            backdrop-filter: blur(8px);
+        }
+
+        .recap-card {
+            background-color: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(51, 65, 85, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .practice-item {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .practice-item:last-child {
+            border-bottom: none;
+        }
+
+        /* Simulating glow without gradients */
+        .glow-blue {
+            box-shadow: 0 0 15px rgba(0, 191, 83, 0.1);
+        }
+    </style>
+</head>
+
+<body class="bg-gray-900 text-white m-0 p-0 overflow-hidden">
+    <div class="w-[1280px] min-h-[720px] relative flex flex-col p-10 font-['Inter'] box-border">
+        <!-- Background Elements (Solid colors with opacity/blur to replace gradients) -->
+        <div
+            class="absolute top-0 right-0 w-[600px] h-[600px] bg-green-900 rounded-full opacity-10 blur-[100px] pointer-events-none z-0">
+        </div>
+        <div
+            class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-900 rounded-full opacity-10 blur-[100px] pointer-events-none z-0">
+        </div>
+        <!-- Header -->
+        <header class="relative z-10 mb-8 border-b border-gray-800 pb-4 flex items-center justify-between">
+            <div class="flex items-center gap-5">
+                <div
+                    class="w-14 h-14 bg-gray-800 rounded-xl flex items-center justify-center border border-gray-700 shadow-lg">
+                    <i class="fa-brands fa-react text-4xl text-[#00bf53]"></i>
+                </div>
+                <div>
+                    <h1 class="text-4xl font-bold text-white tracking-tight mb-1">Best Practices &amp; Summary</h1>
+                    <p class="text-gray-400 text-lg font-light">Key takeaways for production-ready React development</p>
+                </div>
+            </div>
+            <div class="bg-gray-800 px-4 py-2 rounded-lg border border-gray-700">
+                <p class="text-sm font-mono text-green-300"><i class="fa-solid fa-check-double mr-2"></i>Recap</p>
+            </div>
+        </header>
+        <!-- Main Content Grid -->
+        <div class="flex-1 grid grid-cols-12 gap-8 relative z-10 min-h-0">
+            <!-- Left Column: Best Practices (7 cols) -->
+            <div class="col-span-7 flex flex-col gap-5">
+                <div class="glass-panel rounded-2xl p-1 flex-1 flex flex-col">
+                    <div
+                        class="px-6 py-4 border-b border-gray-700/50 flex justify-between items-center bg-gray-800/30 rounded-t-xl">
+                        <h2 class="text-xl font-bold text-white flex items-center gap-3">
+                            <i class="fa-solid fa-thumbs-up text-green-400"></i>
+                            <p class="m-0">Development Guidelines</p>
+                        </h2>
+                        <span class="text-xs font-mono text-gray-500 uppercase tracking-widest">Do's &amp; Don'ts</span>
+                    </div>
+                    <div class="p-2 flex-1 flex flex-col justify-center">
+                        <!-- Item 1 -->
+                        <div
+                            class="practice-item p-3 flex items-start gap-4 hover:bg-white/5 rounded-lg transition-colors">
+                            <div
+                                class="mt-1 w-6 h-6 rounded-full bg-[#00bf53]/20 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-bolt text-xs text-[#00bf53]"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-base font-semibold text-green-100 mb-0.5">
+                                    <p class="m-0">Prefer Functional Components</p>
+                                </h3>
+                                <p class="text-sm text-gray-400 leading-snug m-0">Use modern functions with Hooks over
+                                    class-based components for cleaner, reusable code.</p>
+                            </div>
+                        </div>
+                        <!-- Item 2 -->
+                        <div
+                            class="practice-item p-3 flex items-start gap-4 hover:bg-white/5 rounded-lg transition-colors">
+                            <div
+                                class="mt-1 w-6 h-6 rounded-full bg-green-500/20 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-database text-xs text-green-400"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-base font-semibold text-green-100 mb-0.5">
+                                    <p class="m-0">Keep State Minimal</p>
+                                </h3>
+                                <p class="text-sm text-gray-400 leading-snug m-0">Avoid redundant state. Lift state up
+                                    when needed, but prevent prop drilling via Context.</p>
+                            </div>
+                        </div>
+                        <!-- Item 3 -->
+                        <div
+                            class="practice-item p-3 flex items-start gap-4 hover:bg-white/5 rounded-lg transition-colors">
+                            <div
+                                class="mt-1 w-6 h-6 rounded-full bg-purple-500/20 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-list-ol text-xs text-purple-400"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-base font-semibold text-purple-100 mb-0.5">
+                                    <p class="m-0">List Rendering &amp; Keys</p>
+                                </h3>
+                                <p class="text-sm text-gray-400 leading-snug m-0">Always use unique, stable
+                                    <code>key</code> props for lists to ensure efficient DOM updates.</p>
+                            </div>
+                        </div>
+                        <!-- Item 4 -->
+                        <div
+                            class="practice-item p-3 flex items-start gap-4 hover:bg-white/5 rounded-lg transition-colors">
+                            <div
+                                class="mt-1 w-6 h-6 rounded-full bg-yellow-500/20 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-shield-halved text-xs text-yellow-400"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-base font-semibold text-yellow-100 mb-0.5">
+                                    <p class="m-0">Type Safety &amp; Quality</p>
+                                </h3>
+                                <p class="text-sm text-gray-400 leading-snug m-0">Use TypeScript or PropTypes. Enforce
+                                    quality with ESLint and React Testing Library.</p>
+                            </div>
+                        </div>
+                        <!-- Item 5 -->
+                        <div
+                            class="practice-item p-3 flex items-start gap-4 hover:bg-white/5 rounded-lg transition-colors">
+                            <div
+                                class="mt-1 w-6 h-6 rounded-full bg-pink-500/20 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-gauge-high text-xs text-pink-400"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-base font-semibold text-pink-100 mb-0.5">
+                                    <p class="m-0">Performance</p>
+                                </h3>
+                                <p class="text-sm text-gray-400 leading-snug m-0">Implement code splitting with
+                                    <code>React.lazy</code> and styling with Tailwind or CSS Modules.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Right Column: Summary (5 cols) -->
+            <div class="col-span-5 flex flex-col h-full">
+                <div class="glass-panel rounded-2xl p-6 h-full flex flex-col bg-gray-800/40">
+                    <div class="mb-5 flex items-center justify-between">
+                        <h2 class="text-xl font-bold text-white">
+                            <p class="m-0">Concepts Mastered</p>
+                        </h2>
+                        <i class="fa-solid fa-graduation-cap text-gray-500 text-xl"></i>
+                    </div>
+                    <div class="grid grid-cols-1 gap-3 flex-1 overflow-hidden">
+                        <!-- Concept 1 -->
+                        <div class="recap-card rounded-xl p-3 flex items-center gap-3">
+                            <div
+                                class="w-10 h-10 rounded bg-[#00bf53]/10 flex items-center justify-center text-[#00bf53]">
+                                <i class="fa-brands fa-react text-xl"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="text-sm font-bold text-white m-0">
+                                    <p class="m-0">Components &amp; JSX</p>
+                                </h4>
+                                <p class="text-xs text-gray-400 m-0">Building blocks of UI</p>
+                            </div>
+                        </div>
+                        <!-- Concept 2 -->
+                        <div class="recap-card rounded-xl p-3 flex items-center gap-3">
+                            <div
+                                class="w-10 h-10 rounded bg-green-500/10 flex items-center justify-center text-green-400">
+                                <i class="fa-solid fa-arrow-down-long text-xl"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="text-sm font-bold text-white m-0">
+                                    <p class="m-0">Props &amp; Data Flow</p>
+                                </h4>
+                                <p class="text-xs text-gray-400 m-0">Parent to child communication</p>
+                            </div>
+                        </div>
+                        <!-- Concept 3 -->
+                        <div class="recap-card rounded-xl p-3 flex items-center gap-3">
+                            <div
+                                class="w-10 h-10 rounded bg-purple-500/10 flex items-center justify-center text-purple-400">
+                                <i class="fa-solid fa-anchor text-xl"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="text-sm font-bold text-white m-0">
+                                    <p class="m-0">Hooks &amp; State</p>
+                                </h4>
+                                <p class="text-xs text-gray-400 m-0">useState, useEffect logic</p>
+                            </div>
+                        </div>
+                        <!-- Concept 4 -->
+                        <div class="recap-card rounded-xl p-3 flex items-center gap-3">
+                            <div
+                                class="w-10 h-10 rounded bg-yellow-500/10 flex items-center justify-center text-yellow-400">
+                                <i class="fa-solid fa-code-branch text-xl"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="text-sm font-bold text-white m-0">
+                                    <p class="m-0">Events &amp; Logic</p>
+                                </h4>
+                                <p class="text-xs text-gray-400 m-0">Handling interaction</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-5 pt-4 border-t border-gray-700">
+                        <p class="text-center text-gray-400 text-sm italic m-0">"You are now ready to build modern
+                            apps!"</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer -->
+        <div
+            class="absolute bottom-4 left-10 right-10 flex justify-between items-center text-xs text-gray-600 font-mono border-t border-gray-800 pt-3">
+            <span class="uppercase tracking-widest">End of Module</span>
+            <span>10 / 10</span>
+        </div>
+    </div>
+</body>
+
+</html>
