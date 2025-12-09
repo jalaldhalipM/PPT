@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Components: Functional vs Class</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <style>
+        .code-block {
+            font-family: 'JetBrains Mono', monospace;
+            background-color: #1e1e1e;
+            /* VS Code Dark */
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid #333;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .token-keyword {
+            color: #c678dd;
+        }
+
+        /* Purple */
+        .token-component {
+            color: #e5c07b;
+        }
+
+        /* Yellow */
+        .token-function {
+            color: #61afef;
+        }
+
+        /* Blue */
+        .token-string {
+            color: #98c379;
+        }
+
+        /* Green */
+        .token-prop {
+            color: #d19a66;
+        }
+
+        /* Orange */
+        .token-tag {
+            color: #e06c75;
+        }
+
+        /* Red */
+        .token-text {
+            color: #abb2bf;
+        }
+
+        /* Grey */
+        .token-bracket {
+            color: #d19a66;
+        }
+
+        /* Orange Brackets */
+
+        .card-modern {
+            background-color: rgba(30, 41, 59, 0.8);
+            border: 1px solid rgba(0, 191, 83, 0.2);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        .card-legacy {
+            background-color: rgba(30, 41, 59, 0.4);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+        }
+
+        .check-item i {
+            width: 24px;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-900 text-white m-0 p-0 overflow-hidden">
+    <div class="w-[1280px] min-h-[720px] relative flex flex-col p-12 font-['Inter']">
+        <!-- Background Decor -->
+        <div class="absolute top-0 right-0 p-12 opacity-10 pointer-events-none">
+            <i class="fa-brands fa-react text-9xl text-[#00bf53]"></i>
+        </div>
+        <!-- Header -->
+        <header class="mb-10 border-b border-gray-800 pb-6 relative z-10">
+            <div class="flex items-center gap-4 mb-2">
+                <div
+                    class="w-12 h-12 bg-green-900/30 rounded-lg flex items-center justify-center border border-[#00bf53]/30">
+                    <i class="fa-solid fa-layer-group text-2xl text-[#00bf53]"></i>
+                </div>
+                <h1 class="text-4xl font-bold text-white">
+                    Components: Functional vs Class
+                </h1>
+            </div>
+            <p class="text-lg text-gray-400 ml-16">
+                Understanding the evolution of React components and why Functions + Hooks are the modern standard.
+            </p>
+        </header>
+        <!-- Main Content Grid -->
+        <div class="grid grid-cols-2 gap-8 flex-1 relative z-10 h-full">
+            <!-- Functional Component Column (Modern) -->
+            <div class="card-modern rounded-2xl p-6 flex flex-col h-full relative overflow-hidden">
+                <!-- Top Badge -->
+                <div
+                    class="absolute top-0 right-0 bg-[#00bf53] text-white text-xs font-bold px-3 py-1 rounded-bl-lg uppercase tracking-wider">
+                    Recommended
+                </div>
+                <div class="flex items-center gap-3 mb-4">
+                    <i class="fa-solid fa-bolt text-yellow-400 text-xl"></i>
+                    <h2 class="text-2xl font-bold text-green-100">Functional Component</h2>
+                </div>
+                <div class="mb-5 space-y-2">
+                    <p class="flex items-start text-gray-300 check-item">
+                        <i class="fa-solid fa-check text-green-400 mt-1"></i>
+                        <span>Simpler syntax with less boilerplate</span>
+                    </p>
+                    <p class="flex items-start text-gray-300 check-item">
+                        <i class="fa-solid fa-check text-green-400 mt-1"></i>
+                        <span>Uses <strong>Hooks</strong> (useState, useEffect) for logic</span>
+                    </p>
+                    <p class="flex items-start text-gray-300 check-item">
+                        <i class="fa-solid fa-check text-green-400 mt-1"></i>
+                        <span>Easier to read, test, and maintain</span>
+                    </p>
+                </div>
+                <!-- Code Snippet -->
+                <div class="code-block p-4 text-sm leading-relaxed shadow-lg flex-1">
+                    <pre class="m-0">
+<span class="token-keyword">function</span> <span class="token-function">Greeting</span><span class="token-bracket">({</span> <span class="token-text">name</span> <span class="token-bracket">})</span> <span class="token-bracket">{</span>
+  <span class="token-text">// Logic is simpler &amp; direct</span>
+  
+  <span class="token-keyword">return</span> <span class="token-bracket">(</span>
+    <span class="token-tag">&lt;div</span> <span class="token-prop">className</span><span class="token-keyword">=</span><span class="token-string">"card"</span><span class="token-tag">&gt;</span>
+      <span class="token-tag">&lt;h2&gt;</span><span class="token-text">Hello, </span><span class="token-bracket">{</span><span class="token-text">name</span><span class="token-bracket">}</span><span class="token-tag">&lt;/h2&gt;</span>
+    <span class="token-tag">&lt;/div&gt;</span>
+  <span class="token-bracket">)</span><span class="token-text">;</span>
+<span class="token-bracket">}</span>
+</pre>
+                </div>
+            </div>
+            <!-- Class Component Column (Legacy) -->
+            <div class="card-legacy rounded-2xl p-6 flex flex-col h-full relative">
+                <!-- Top Badge -->
+                <div
+                    class="absolute top-0 right-0 bg-gray-700 text-gray-300 text-xs font-bold px-3 py-1 rounded-bl-lg uppercase tracking-wider">
+                    Legacy Support
+                </div>
+                <div class="flex items-center gap-3 mb-4 opacity-80">
+                    <i class="fa-solid fa-box-archive text-gray-400 text-xl"></i>
+                    <h2 class="text-2xl font-bold text-gray-300">Class Component</h2>
+                </div>
+                <div class="mb-5 space-y-2">
+                    <p class="flex items-start text-gray-400 check-item">
+                        <i class="fa-solid fa-info-circle text-gray-500 mt-1"></i>
+                        <span>Requires extending <code>React.Component</code></span>
+                    </p>
+                    <p class="flex items-start text-gray-400 check-item">
+                        <i class="fa-solid fa-info-circle text-gray-500 mt-1"></i>
+                        <span>Uses <code>this</code> keyword (can be confusing)</span>
+                    </p>
+                    <p class="flex items-start text-gray-400 check-item">
+                        <i class="fa-solid fa-info-circle text-gray-500 mt-1"></i>
+                        <span>Complex lifecycle methods (componentDidMount)</span>
+                    </p>
+                </div>
+                <!-- Code Snippet -->
+                <div class="code-block p-4 text-sm leading-relaxed shadow-lg opacity-90 flex-1 border-gray-700">
+                    <pre class="m-0">
+<span class="token-keyword">class</span> <span class="token-component">Greeting</span> <span class="token-keyword">extends</span> <span class="token-component">React.Component</span> <span class="token-bracket">{</span>
+  <span class="token-function">render</span><span class="token-bracket">()</span> <span class="token-bracket">{</span>
+    <span class="token-keyword">return</span> <span class="token-bracket">(</span>
+      <span class="token-tag">&lt;div</span> <span class="token-prop">className</span><span class="token-keyword">=</span><span class="token-string">"card"</span><span class="token-tag">&gt;</span>
+        <span class="token-tag">&lt;h2&gt;</span>
+          <span class="token-text">Hello, </span><span class="token-bracket">{</span><span class="token-keyword">this</span><span class="token-text">.props.name</span><span class="token-bracket">}</span>
+        <span class="token-tag">&lt;/h2&gt;</span>
+      <span class="token-tag">&lt;/div&gt;</span>
+    <span class="token-bracket">)</span><span class="token-text">;</span>
+  <span class="token-bracket">}</span>
+<span class="token-bracket">}</span>
+</pre>
+                </div>
+            </div>
+        </div>
+        <!-- Footer Info -->
+        <div
+            class="absolute bottom-6 left-12 right-12 flex justify-between items-center text-xs text-gray-500 font-mono border-t border-gray-800 pt-4">
+            <span>MODERN REACT DEVELOPMENT</span>
+            <div class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-[#00bf53]"></span>
+                <span>Active Standard</span>
+            </div>
+            <span>03</span>
+        </div>
+    </div>
+</body>
+
+</html>
