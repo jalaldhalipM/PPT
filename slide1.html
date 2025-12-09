@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>React Basics Presentation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet" />
+    <style>
+        .glass-panel {
+            background: rgba(17, 24, 39, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .react-spin {
+            animation: spin 20s linear infinite;
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .text-glow {
+            text-shadow: 0 0 40px rgba(0, 191, 83, 0.3);
+        }
+    </style>
+</head>
+
+<body class="m-0 p-0 overflow-hidden bg-gray-900 text-white">
+    <div class="w-[1280px] h-[720px] relative flex flex-col items-center justify-center overflow-hidden font-['Inter']">
+        <!-- Background Image with Gradient Feel -->
+        <div class="absolute inset-0 z-0">
+            <img alt="Background" class="w-full h-full object-cover opacity-80"
+                src="https://page.gensparksite.com/slides_images/06555d9db59455747f8fd08304b33191.webp" />
+            <div class="absolute inset-0 bg-gradient-to-br from-gray-900/90 via-gray-900/60 to-purple-900/40"></div>
+        </div>
+        <!-- Decorative Elements -->
+        <div class="absolute top-0 right-0 p-12 opacity-20 z-10">
+            <i class="fa-brands fa-react text-9xl text-[#00bf53]"></i>
+        </div>
+        <div class="absolute bottom-0 left-0 p-12 opacity-10 z-10">
+            <i class="fa-solid fa-code text-8xl text-purple-400"></i>
+        </div>
+        <!-- Main Content Card -->
+        <div class="z-20 relative w-full max-w-5xl px-8">
+            <div
+                class="glass-panel rounded-3xl p-16 flex flex-col items-center text-center shadow-2xl transform transition hover:scale-[1.01] duration-500">
+                <!-- Logo Section -->
+                <div class="relative mb-10 group">
+                    <div
+                        class="absolute inset-0 bg-[#00bf53] rounded-full blur-3xl opacity-20 group-hover:opacity-30 transition duration-700">
+                    </div>
+                    <img alt="React Logo"
+                        class="w-40 h-40 object-contain relative z-10 react-spin drop-shadow-[0_0_15px_rgba(0, 191, 83,0.5)]"
+                        src="https://page.gensparksite.com/slides_images/471ddac967d0044283baceb69f35a323.webp" />
+                </div>
+                <!-- Title Section -->
+                <h1
+                    class="text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-green-300 via-white to-purple-300 mb-6 tracking-tight pb-2 text-glow">
+                    React Basics
+                </h1>
+                <h2 class="text-3xl text-green-200 font-semibold mb-8 tracking-wide">
+                    Front End Development
+                </h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-[#00bf53] to-purple-500 rounded-full mb-10"></div>
+                <!-- Subtitle -->
+                <p class="text-xl text-gray-300 max-w-2xl leading-relaxed font-light mb-12">
+                    Build Modern, Interactive User Interfaces
+                </p>
+                <!-- Topic Pills -->
+                <div class="flex flex-wrap justify-center gap-4">
+                    <div
+                        class="flex items-center space-x-2 px-5 py-2.5 bg-gray-800/50 border border-gray-700/50 rounded-full hover:bg-gray-700/50 transition duration-300">
+                        <i class="fa-solid fa-cubes text-[#00bf53] text-sm"></i>
+                        <span class="text-sm font-['JetBrains_Mono'] text-green-100">Components</span>
+                    </div>
+                    <div
+                        class="flex items-center space-x-2 px-5 py-2.5 bg-gray-800/50 border border-gray-700/50 rounded-full hover:bg-gray-700/50 transition duration-300">
+                        <i class="fa-solid fa-code text-purple-400 text-sm"></i>
+                        <span class="text-sm font-['JetBrains_Mono'] text-purple-100">JSX</span>
+                    </div>
+                    <div
+                        class="flex items-center space-x-2 px-5 py-2.5 bg-gray-800/50 border border-gray-700/50 rounded-full hover:bg-gray-700/50 transition duration-300">
+                        <i class="fa-solid fa-anchor text-pink-400 text-sm"></i>
+                        <span class="text-sm font-['JetBrains_Mono'] text-pink-100">Hooks</span>
+                    </div>
+                    <div
+                        class="flex items-center space-x-2 px-5 py-2.5 bg-gray-800/50 border border-gray-700/50 rounded-full hover:bg-gray-700/50 transition duration-300">
+                        <i class="fa-solid fa-database text-green-400 text-sm"></i>
+                        <span class="text-sm font-['JetBrains_Mono'] text-green-100">State</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer -->
+        <div class="absolute bottom-6 w-full text-center z-20">
+            <p class="text-gray-500 text-xs font-['JetBrains_Mono'] tracking-widest uppercase opacity-60">
+                Introduction to Modern Web Development Series
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>
