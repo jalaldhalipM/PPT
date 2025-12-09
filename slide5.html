@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Props: Passing Data Down</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <style>
+        .glass-panel {
+            background: rgba(17, 24, 39, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .feature-card {
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(0, 191, 83, 0.3);
+            background: rgba(30, 41, 59, 0.7);
+        }
+
+        .diagram-node {
+            background: linear-gradient(145deg, #1e293b, #0f172a);
+            border: 1px solid rgba(0, 191, 83, 0.2);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        .connection-arrow {
+            position: absolute;
+            z-index: 0;
+            background: #00bf53;
+        }
+
+        .arrow-head {
+            width: 0;
+            height: 0;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-top: 8px solid #00bf53;
+            position: absolute;
+        }
+
+        .code-snippet {
+            font-family: 'JetBrains Mono', monospace;
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+
+<body class="bg-gray-900 text-white overflow-hidden m-0 p-0">
+    <div class="w-[1280px] h-[720px] relative flex flex-col p-12 font-['Inter']">
+        <!-- Background Elements -->
+        <div class="absolute inset-0 z-0">
+            <div
+                class="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] bg-purple-900/20 rounded-full blur-[120px]">
+            </div>
+            <div class="absolute bottom-[-10%] left-[-5%] w-[500px] h-[500px] bg-green-900/10 rounded-full blur-[100px]">
+            </div>
+        </div>
+        <!-- Header Section -->
+        <header class="relative z-10 mb-8 border-b border-gray-800 pb-4">
+            <div class="flex items-center gap-4 mb-2">
+                <i class="fa-solid fa-arrow-right-arrow-left text-4xl text-[#00bf53]"></i>
+                <h1 class="text-5xl font-bold bg-clip-text text-transparent text-white">
+                    Props: Passing Data Down
+                </h1>
+            </div>
+            <p class="text-xl text-gray-400 font-light ml-14">
+                The mechanism for passing data from parent to child components, making them dynamic and reusable.
+            </p>
+        </header>
+        <!-- Main Content Area -->
+        <div class="relative z-10 flex gap-8 h-full">
+            <!-- Left Column: Content (55%) -->
+            <div class="w-[55%] flex flex-col gap-5">
+                <!-- Core Concept Card -->
+                <div class="glass-panel p-6 rounded-2xl">
+                    <h3 class="text-lg font-semibold text-green-300 mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-bolt text-sm"></i> Key Characteristics
+                    </h3>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="feature-card p-4 rounded-xl">
+                            <div class="flex items-center gap-3 mb-2">
+                                <div
+                                    class="w-8 h-8 rounded-lg bg-[#00bf53]/20 flex items-center justify-center text-[#00bf53]">
+                                    <i class="fa-solid fa-arrow-down"></i>
+                                </div>
+                                <span class="font-bold text-gray-200">Unidirectional</span>
+                            </div>
+                            <p class="text-sm text-gray-400 leading-snug">
+                                Data only flows one way: down from Parent to Child. Children cannot modify props.
+                            </p>
+                        </div>
+                        <div class="feature-card p-4 rounded-xl">
+                            <div class="flex items-center gap-3 mb-2">
+                                <div
+                                    class="w-8 h-8 rounded-lg bg-red-500/20 flex items-center justify-center text-red-400">
+                                    <i class="fa-solid fa-lock"></i>
+                                </div>
+                                <span class="font-bold text-gray-200">Read-Only</span>
+                            </div>
+                            <p class="text-sm text-gray-400 leading-snug">
+                                Props are immutable. To change UI, parents pass new props, triggering a re-render.
+                            </p>
+                        </div>
+                        <div class="feature-card p-4 rounded-xl">
+                            <div class="flex items-center gap-3 mb-2">
+                                <div
+                                    class="w-8 h-8 rounded-lg bg-purple-500/20 flex items-center justify-center text-purple-400">
+                                    <i class="fa-solid fa-puzzle-piece"></i>
+                                </div>
+                                <span class="font-bold text-gray-200">Configurable</span>
+                            </div>
+                            <p class="text-sm text-gray-400 leading-snug">
+                                Makes components reusable by allowing different data to be passed to the same component
+                                structure.
+                            </p>
+                        </div>
+                        <div class="feature-card p-4 rounded-xl">
+                            <div class="flex items-center gap-3 mb-2">
+                                <div
+                                    class="w-8 h-8 rounded-lg bg-green-500/20 flex items-center justify-center text-green-400">
+                                    <i class="fa-solid fa-code-branch"></i>
+                                </div>
+                                <span class="font-bold text-gray-200">Functions Too</span>
+                            </div>
+                            <p class="text-sm text-gray-400 leading-snug">
+                                You can pass functions (callbacks) as props to allow children to communicate back to
+                                parents.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Code Example -->
+                <div class="glass-panel p-5 rounded-xl flex-1">
+                    <h4 class="text-gray-300 font-semibold mb-3 text-sm uppercase tracking-wider flex justify-between">
+                        <span>Usage Example</span>
+                        <span class="text-xs normal-case text-gray-500">App.js</span>
+                    </h4>
+                    <div class="code-snippet p-4 rounded-lg text-sm overflow-hidden">
+                        <div class="text-gray-300">
+                            <span class="text-purple-400">function</span> <span class="text-yellow-300">App</span>()
+                            {<br />
+                            <span class="ml-4 text-purple-400">return</span> (<br />
+                            <span class="ml-8">&lt;<span class="text-yellow-300">Button</span></span><br />
+                            <span class="ml-12 text-green-300">label</span>=<span
+                                class="text-green-300">"Save"</span><br />
+                            <span class="ml-12 text-green-300">onClick</span>={<span
+                                class="text-green-300">handleSave</span>} <br />
+                            <span class="ml-8">/&gt;</span><br />
+                            <span class="ml-4">);</span><br />
+                            }<br /><br />
+                            <span class="text-purple-400">function</span> <span class="text-yellow-300">Button</span>({
+                            <span class="text-green-300">label</span>, <span class="text-green-300">onClick</span> })
+                            {<br />
+                            <span class="ml-4 text-purple-400">return</span> &lt;<span
+                                class="text-red-300">button</span> <span class="text-green-300">onClick</span>={<span
+                                class="text-green-300">onClick</span>}&gt;{<span
+                                class="text-green-300">label</span>}&lt;/<span
+                                class="text-red-300">button</span>&gt;;<br />
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Right Column: Visual Diagram (45%) -->
+            <div class="w-[45%] relative flex flex-col items-center justify-center pl-8">
+                <div class="relative w-full h-[500px] flex flex-col items-center justify-center">
+                    <!-- Parent Component Node -->
+                    <div class="diagram-node w-64 p-5 rounded-xl z-20 mb-16 relative">
+                        <div
+                            class="absolute -top-3 -right-3 bg-[#00bf53] text-white text-xs px-2 py-1 rounded-full font-bold">
+                            Parent</div>
+                        <h4 class="text-center font-bold text-white text-lg mb-2">App Component</h4>
+                        <div class="bg-gray-800/80 rounded p-2 text-xs text-gray-300 font-mono border border-gray-700">
+                            <div class="flex justify-between border-b border-gray-700 pb-1 mb-1">
+                                <span>Data Source</span>
+                            </div>
+                            <div>label: "Save"</div>
+                            <div>fn: handleSave()</div>
+                        </div>
+                    </div>
+                    <!-- Flow Arrows -->
+                    <div
+                        class="absolute top-[35%] left-1/2 transform -translate-x-1/2 h-20 w-1 bg-gradient-to-b from-[#00bf53] to-purple-500 z-10">
+                    </div>
+                    <div
+                        class="absolute top-[48%] left-1/2 transform -translate-x-1/2 text-purple-300 bg-gray-900 px-2 py-1 rounded text-xs font-mono border border-purple-500/30 z-20">
+                        props
+                    </div>
+                    <div
+                        class="absolute top-[48%] left-1/2 transform -translate-x-1/2 translate-y-6 w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[10px] border-t-purple-500 z-10">
+                    </div>
+                    <!-- Child Component Node -->
+                    <div class="diagram-node w-64 p-5 rounded-xl z-20 mt-4 relative">
+                        <div
+                            class="absolute -top-3 -right-3 bg-green-600 text-white text-xs px-2 py-1 rounded-full font-bold">
+                            Child</div>
+                        <h4 class="text-center font-bold text-white text-lg mb-2">Button Component</h4>
+                        <div class="bg-gray-800/80 rounded p-2 text-xs text-gray-300 font-mono border border-gray-700">
+                            <div class="flex justify-between border-b border-gray-700 pb-1 mb-1">
+                                <span>Received Props</span>
+                                <i class="fa-solid fa-lock text-[10px] text-gray-500" title="Read-only"></i>
+                            </div>
+                            <div class="text-green-300">props.label</div>
+                            <div class="text-green-300">props.onClick</div>
+                        </div>
+                    </div>
+                    <!-- Visual Annotation -->
+                    <div class="absolute top-[10%] right-[-10px] w-48 text-right">
+                        <div class="bg-green-900/30 border border-[#00bf53]/30 p-3 rounded-lg backdrop-blur-sm">
+                            <p class="text-xs text-green-200">
+                                <i class="fa-solid fa-circle-info mr-1"></i>
+                                Parent owns the data and functions
+                            </p>
+                        </div>
+                    </div>
+                    <div class="absolute bottom-[10%] left-[-10px] w-48 text-left">
+                        <div class="bg-green-900/30 border border-green-500/30 p-3 rounded-lg backdrop-blur-sm">
+                            <p class="text-xs text-green-200">
+                                <i class="fa-solid fa-check mr-1"></i>
+                                Child simply renders what it receives
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer number -->
+        <div class="absolute bottom-6 right-8 text-gray-600 font-mono text-sm">
+            05
+        </div>
+    </div>
+</body>
+
+</html>
