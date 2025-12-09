@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>JSX Basics and Rules</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <style>
+        .code-window {
+            background-color: #1e1e1e;
+            border-radius: 0.75rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+            font-family: 'JetBrains Mono', monospace;
+            border: 1px solid #333;
+        }
+
+        .token-keyword {
+            color: #c678dd;
+        }
+
+        /* Purple */
+        .token-function {
+            color: #61afef;
+        }
+
+        /* Blue */
+        .token-string {
+            color: #98c379;
+        }
+
+        /* Green */
+        .token-tag {
+            color: #e06c75;
+        }
+
+        /* Red */
+        .token-attr {
+            color: #d19a66;
+        }
+
+        /* Orange */
+        .token-text {
+            color: #abb2bf;
+        }
+
+        /* Grey */
+        .token-comment {
+            color: #5c6370;
+            font-style: italic;
+        }
+
+        /* Grey comment */
+        .token-bracket {
+            color: #e5c07b;
+        }
+
+        /* Yellow */
+
+        .rule-card {
+            background-color: rgba(30, 41, 59, 0.6);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            transition: transform 0.2s;
+        }
+
+        /* Custom scrollbar for code block if needed */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1e1e1e;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #4b5563;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-900 text-white m-0 p-0 overflow-hidden">
+    <div class="w-[1280px] h-[720px] relative flex flex-col p-8 font-['Inter']">
+        <!-- Background Decor (Circles instead of gradients) -->
+        <div
+            class="absolute top-[-100px] right-[-100px] w-[500px] h-[500px] bg-green-900 rounded-full opacity-20 blur-[80px] pointer-events-none z-0">
+        </div>
+        <div
+            class="absolute bottom-[-100px] left-[-100px] w-[400px] h-[400px] bg-purple-900 rounded-full opacity-20 blur-[80px] pointer-events-none z-0">
+        </div>
+        <!-- Header -->
+        <header class="relative z-10 mb-6 border-b border-gray-800 pb-4 flex justify-between items-end">
+            <div>
+                <div class="flex items-center gap-4 mb-2">
+                    <div
+                        class="w-10 h-10 bg-[#00bf53]/10 rounded-lg flex items-center justify-center border border-[#00bf53]/20">
+                        <i class="fa-brands fa-react text-2xl text-[#00bf53]"></i>
+                    </div>
+                    <h1 class="text-4xl font-bold text-white tracking-tight">JSX Basics &amp; Rules</h1>
+                </div>
+                <p class="text-gray-400 text-lg ml-14 font-light">Syntax Extension for JavaScript - Looks like HTML,
+                    powers React.</p>
+            </div>
+            <div
+                class="flex items-center gap-2 text-sm font-mono text-gray-500 bg-gray-800/80 px-4 py-2 rounded-lg border border-gray-700">
+                <i class="fa-solid fa-file-code"></i>
+                src/components/Todo.jsx
+            </div>
+        </header>
+        <!-- Main Content -->
+        <div class="flex-1 flex gap-8 relative z-10 min-h-0">
+            <!-- Left Side: Rules & Explanations (35%) -->
+            <div class="w-[35%] flex flex-col gap-4 py-1">
+                <!-- Rule 1 -->
+                <div class="rule-card p-5 rounded-xl border-l-4 border-l-blue-500 flex-1 flex flex-col justify-center">
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="text-2xl font-bold text-[#00bf53]">01</span>
+                        <h3 class="text-lg font-bold text-gray-100">Single Root Element</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Return a single parent. Use Fragments <span
+                            class="bg-gray-800 px-1.5 py-0.5 rounded text-green-200 font-mono text-xs">&lt;&gt;...&lt;/&gt;</span>
+                        to group multiple elements without adding extra nodes to the DOM.
+                    </p>
+                </div>
+                <!-- Rule 2 -->
+                <div
+                    class="rule-card p-5 rounded-xl border-l-4 border-l-purple-500 flex-1 flex flex-col justify-center">
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="text-2xl font-bold text-purple-400">02</span>
+                        <h3 class="text-lg font-bold text-gray-100">Close All Tags</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Every tag must be closed. Self-closing tags like <span
+                            class="bg-gray-800 px-1.5 py-0.5 rounded text-purple-200 font-mono text-xs">&lt;img
+                            /&gt;</span> and <span
+                            class="bg-gray-800 px-1.5 py-0.5 rounded text-purple-200 font-mono text-xs">&lt;input
+                            /&gt;</span> are mandatory in JSX.
+                    </p>
+                </div>
+                <!-- Rule 3 -->
+                <div class="rule-card p-5 rounded-xl border-l-4 border-l-green-500 flex-1 flex flex-col justify-center">
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="text-2xl font-bold text-green-400">03</span>
+                        <h3 class="text-lg font-bold text-gray-100">camelCase Attributes</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Use JS property names. <span
+                            class="bg-gray-800 px-1.5 py-0.5 rounded text-green-200 font-mono text-xs">class</span>
+                        becomes <span
+                            class="bg-gray-800 px-1.5 py-0.5 rounded text-green-200 font-mono text-xs">className</span>,
+                        <span class="bg-gray-800 px-1.5 py-0.5 rounded text-green-200 font-mono text-xs">onclick</span>
+                        becomes <span
+                            class="bg-gray-800 px-1.5 py-0.5 rounded text-green-200 font-mono text-xs">onClick</span>.
+                    </p>
+                </div>
+                <!-- Pro Tip -->
+                <div class="bg-green-900/10 border border-[#00bf53]/20 rounded-lg p-3 flex items-start gap-3">
+                    <i class="fa-solid fa-circle-info text-[#00bf53] mt-0.5"></i>
+                    <p class="text-xs text-green-200 leading-tight">JSX expressions can be embedded using curly braces
+                        <span class="font-mono text-yellow-300">{}</span>.</p>
+                </div>
+            </div>
+            <!-- Right Side: Large Code Block (65%) -->
+            <div class="w-[65%] h-full flex flex-col">
+                <div class="code-window flex-1 flex flex-col relative overflow-hidden">
+                    <!-- Window Header -->
+                    <div class="bg-[#21252b] px-4 py-3 flex items-center gap-2 border-b border-black/40">
+                        <div class="flex gap-1.5">
+                            <div class="w-3 h-3 rounded-full bg-[#ff5f56]"></div>
+                            <div class="w-3 h-3 rounded-full bg-[#ffbd2e]"></div>
+                            <div class="w-3 h-3 rounded-full bg-[#27c93f]"></div>
+                        </div>
+                        <span class="ml-4 text-xs text-gray-400 font-mono">TodoApp.jsx</span>
+                    </div>
+                    <!-- Code Content -->
+                    <div class="p-6 overflow-hidden flex-1 relative bg-[#1e1e1e]">
+                        <!-- Line Numbers -->
+                        <div
+                            class="absolute left-0 top-6 bottom-0 w-12 text-right pr-4 text-gray-600 select-none font-mono text-sm leading-7 border-r border-gray-800 h-full bg-[#1e1e1e]">
+                            1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />17<br />18
+                        </div>
+                        <!-- Syntax Highlighted Code -->
+                        <pre class="m-0 pl-6 text-sm leading-7 font-mono relative z-10"><span class="token-keyword">export default function</span> <span class="token-function">TodoApp</span><span class="token-bracket">()</span> <span class="token-bracket">{</span>
+  <span class="token-keyword">const</span> <span class="token-text">todos</span> <span class="token-keyword">=</span> <span class="token-bracket">[</span><span class="token-string">'Learn JSX'</span><span class="token-text">, </span><span class="token-string">'Build Component'</span><span class="token-text">, </span><span class="token-string">'Ship App'</span><span class="token-bracket">]</span><span class="token-text">;</span>
+
+  <span class="token-keyword">return</span> <span class="token-bracket">(</span>
+    <span class="token-comment">// Rule 1: Use Fragment for single root</span>
+    <span class="token-tag">&lt;&gt;</span>
+      <span class="token-tag">&lt;div</span> <span class="token-attr">className</span><span class="token-keyword">=</span><span class="token-string">"container mx-auto"</span><span class="token-tag">&gt;</span> <span class="token-comment">{/* Rule 3: className */}</span>
+        
+        <span class="token-tag">&lt;h1</span> <span class="token-attr">style</span><span class="token-keyword">=</span><span class="token-bracket">{{</span> <span class="token-attr">color:</span> <span class="token-string">'#00bf53'</span> <span class="token-bracket">}}</span><span class="token-tag">&gt;</span><span class="token-text">My Task List</span><span class="token-tag">&lt;/h1&gt;</span>
+        
+        <span class="token-tag">&lt;ul</span> <span class="token-attr">className</span><span class="token-keyword">=</span><span class="token-string">"list-disc"</span><span class="token-tag">&gt;</span>
+          <span class="token-bracket">{</span><span class="token-text">todos.map</span><span class="token-bracket">((</span><span class="token-text">item, index</span><span class="token-bracket">)</span> <span class="token-keyword">=&gt;</span> <span class="token-bracket">(</span>
+            <span class="token-tag">&lt;li</span> <span class="token-attr">key</span><span class="token-keyword">=</span><span class="token-bracket">{</span><span class="token-text">index</span><span class="token-bracket">}</span><span class="token-tag">&gt;</span>
+              <span class="token-text">Check item: </span><span class="token-bracket">{</span><span class="token-text">item</span><span class="token-bracket">}</span>
+            <span class="token-tag">&lt;/li&gt;</span>
+          <span class="token-bracket">))</span><span class="token-bracket">}</span>
+        <span class="token-tag">&lt;/ul&gt;</span>
+
+        <span class="token-comment">// Rule 2: Self-closing tag</span>
+        <span class="token-tag">&lt;input</span> <span class="token-attr">type</span><span class="token-keyword">=</span><span class="token-string">"text"</span> <span class="token-attr">placeholder</span><span class="token-keyword">=</span><span class="token-string">"Add new..."</span> <span class="token-tag">/&gt;</span>
+      
+      <span class="token-tag">&lt;/div&gt;</span>
+    <span class="token-tag">&lt;/&gt;</span>
+  <span class="token-bracket">)</span><span class="token-text">;</span>
+<span class="token-bracket">}</span></pre>
+                        <!-- Visual Annotation Arrows -->
+                        <div
+                            class="absolute top-[125px] right-8 text-xs text-green-400 font-sans opacity-90 flex items-center gap-2">
+                            <i class="fa-solid fa-arrow-left"></i> <span class="bg-black/40 px-1 rounded">Attribute
+                                casing</span>
+                        </div>
+                        <div
+                            class="absolute top-[375px] right-24 text-xs text-purple-400 font-sans opacity-90 flex items-center gap-2">
+                            <i class="fa-solid fa-arrow-left"></i> <span
+                                class="bg-black/40 px-1 rounded">Self-closing</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer -->
+        <div
+            class="absolute bottom-4 left-8 right-8 flex justify-between items-center text-xs text-gray-500 font-mono border-t border-gray-800 pt-3">
+            <span class="uppercase tracking-widest">Core Fundamentals</span>
+            <span>04</span>
+        </div>
+    </div>
+</body>
+
+</html>
